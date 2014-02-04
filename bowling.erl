@@ -1,8 +1,19 @@
 -module(bowling).
 -export([score_game/1]).
 
+-spec score_game(Rolls) -> Score when
+      Rolls :: [Roll],
+      Roll  :: char() | non_neg_integer(),
+      Score :: non_neg_integer().
+
 score_game(Rolls) ->
 	score_game(Rolls, 0).
+
+-spec score_game(Rolls, ScoreAcc) -> Score when
+      Rolls :: [Roll],
+      Roll  :: char() | non_neg_integer(),
+      ScoreAcc :: non_neg_integer(),
+      Score    :: non_neg_integer().
 
 score_game(["X", R2, "/" | Rest], Score) ->
 	FrameScore = Score + 10 + 10,

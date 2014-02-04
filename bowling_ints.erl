@@ -1,8 +1,17 @@
 -module(bowling_ints).
 -export([score_game/1]).
 
+-spec score_game(Rolls) -> FinalScore when
+      Rolls :: [non_neg_integer()],
+      FinalScore ::  non_neg_integer().
+
 score_game(Rolls) ->
 	score_game(Rolls, 0).
+
+-spec score_game(Rolls, ScoreAcc) -> FinalScore when
+      Rolls      :: [non_neg_integer()],
+      ScoreAcc   ::  non_neg_integer(),
+      FinalScore ::  non_neg_integer().
 
 score_game([10, R2, R3 | Rest], Score) ->
 	score_game([R2, R3 | Rest], Score + 10 + R2 + R3);
